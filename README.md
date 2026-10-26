@@ -23,7 +23,7 @@ For delivery on day **D**, day-ahead positions lock by **11:00 UTC on day D−1*
 
 For each half-hour actual from `FUELHH`:
 
-1. Set delivery date \(D\) from the period’s `startTime`.
+1. Set delivery date $D$ from the period’s `startTime`.
 2. Compute cutoff = **D−1 at 11:00:00 UTC**.
 3. Filter `WINDFOR` rows where `startTime == target_time` **and** `publishTime <= cutoff`.
 4. Select the forecast with the **latest** `publishTime` among those eligible (freshest pre-gate information).
@@ -48,12 +48,12 @@ Across all **48 half-hour settlement periods** (and the full January cohort wher
 
 | Metric | Definition |
 | --- | --- |
-| Error | \(\text{Error} = \text{Forecast} - \text{Actual}\) |
+| Error | $\mathrm{Error} = \mathrm{Forecast} - \mathrm{Actual}$ |
 | MAE | Mean Absolute Error |
 | RMSE | Root Mean Squared Error |
 | Mean bias | Mean signed error (systemic directional skew) |
-| Over- / under-forecast % | Share of periods with \(\text{Error} > 0\) vs \(\text{Error} < 0\) |
-| Implied net thermal procurement | \(\max(0,\ \text{Demand Baseline} - \text{Forecasted Wind})\) |
+| Over- / under-forecast % | Share of periods with $\mathrm{Error} > 0$ vs $\mathrm{Error} < 0$ |
+| Implied net thermal procurement | $\max(0,\ \mathrm{Demand\ Baseline} - \mathrm{Forecasted\ Wind})$ |
 
 Default demand baseline is **25,000 MW** (overridable per daily API request). Implied thermal and “actual thermal needed” are computed period-by-period so traders can compare procurement intent vs realised wind shortfall.
 
